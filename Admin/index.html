@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Test it here</h1>
+    <form id="smsForm">
+      <label for="secret">Secret</label>
+      <input type="text" id="secret" placeholder="">
+
+      <label for="deviceID">deviceID</label>
+      <input type="text" id="deviceID" placeholder="">
+
+      <label for="to">To</label>
+      <input type="text" id="to" placeholder="phone number">
+      <small>For USSD, start with * and end with #, example: *123#<br>Message required but ignored</small>
+
+      <label for="message">Message</label>
+      <textarea id="message" placeholder=""></textarea>
+
+      <label for="sim">SIM CARD number</label>
+      <input type="number" id="sim" placeholder="0">
+      <small>1/2/3/4, 0 for default sim</small>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+<script src="api.js"></script>
+<script>
+  document.getElementById('smsForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const secret = document.getElementById('secret').value;
+    const deviceID = document.getElementById('deviceID').value;
+    const to = document.getElementById('to').value;
+    const message = document.getElementById('message').value;
+    const sim = document.getElementById('sim').value;
+
+    submitFormData(secret, deviceID, to, message, sim);
+  });
+</script>
